@@ -138,4 +138,26 @@ public class ContatoDAO {
             }
         }
     }
+
+
+    // metodo que ira deletar os dados
+    public void deletarUsuario(int id){
+        String sql = "DELETE FROM contatos WHERE id = ?";
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        try{
+            con = DbConnection.getConnection();
+            ps = con.prepareStatement(sql);
+
+            ps.setInt(1, id);
+            ps.execute();
+
+            System.out.println("Usuário deletado com êxito!");
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 }
